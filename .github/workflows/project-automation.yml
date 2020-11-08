@@ -1,7 +1,7 @@
 name: 'Proproject Automation'
 on:
   schedule:
-  - cron: "5 * * * *"
+  - cron: "0/5 * * * *"
 jobs:
   add_issue_to_project:
     runs-on: ubuntu-latest
