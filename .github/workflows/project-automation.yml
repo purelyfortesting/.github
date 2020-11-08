@@ -1,15 +1,29 @@
 name: 'Proproject Automation'
 on:
-  issues:
-    types: [opened]
+  schedule:
+  - cron: "5 * * * *"
 jobs:
   add_issue_to_project:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Automate adding issues to Backlog'
-        uses: docker://takanabe/github-actions-automate-projects:v0.0.1
-        if: github.event_name == 'issues'
-        env:
-          GITHUB_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}
-          GITHUB_PROJECT_URL: https://github.com/orgs/purelyfortesting/projects/1
-          GITHUB_PROJECT_COLUMN_NAME: 'Pending Review'
+    - name: 'Trash'
+      uses: subhamX/github-project-bot@v1.0.0
+      env:
+        ACCESS_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}
+        COLUMN_NAME: 'Pending Review'
+        PROJECT_URL: https://github.com/orgs/purelyfortesting/projects/1
+        REPO_URL: https://github.com/purelyfortesting/trash
+    - name: 'Rubbish'
+      uses: subhamX/github-project-bot@v1.0.0
+      env:
+        ACCESS_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}
+        COLUMN_NAME: 'Pending Review'
+        PROJECT_URL: https://github.com/orgs/purelyfortesting/projects/1
+        REPO_URL: https://github.com/purelyfortesting/rubbish
+    - name: 'Garbage'
+      uses: subhamX/github-project-bot@v1.0.0
+      env:
+        ACCESS_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}
+        COLUMN_NAME: 'Pending Review'
+        PROJECT_URL: https://github.com/orgs/purelyfortesting/projects/1
+        REPO_URL: https://github.com/purelyfortesting/garbage
