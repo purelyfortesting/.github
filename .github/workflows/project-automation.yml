@@ -1,7 +1,6 @@
 name: 'Proproject Automation'
 on:
-  schedule:
-  - cron: "0/5 * * * *"
+  - workflow_dispatch
 jobs:
   add_issue_to_project:
     runs-on: ubuntu-latest
