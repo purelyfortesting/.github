@@ -8,21 +8,21 @@ jobs:
     steps:
     - name: 'Trash'
       uses: subhamX/github-project-bot@v1.0.0
-      env:
+      with:
         ACCESS_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}
         COLUMN_NAME: 'Pending Review'
         PROJECT_URL: https://github.com/orgs/purelyfortesting/projects/1
         REPO_URL: https://github.com/purelyfortesting/trash
     - name: 'Rubbish'
       uses: subhamX/github-project-bot@v1.0.0
-      env:
+      with:
         ACCESS_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}
         COLUMN_NAME: 'Pending Review'
         PROJECT_URL: https://github.com/orgs/purelyfortesting/projects/1
         REPO_URL: https://github.com/purelyfortesting/rubbish
     - name: 'Garbage'
       uses: subhamX/github-project-bot@v1.0.0
-      env:
+      with:
         ACCESS_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}
         COLUMN_NAME: 'Pending Review'
         PROJECT_URL: https://github.com/orgs/purelyfortesting/projects/1
