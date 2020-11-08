@@ -5,24 +5,10 @@ jobs:
   add_issue_to_project:
     runs-on: ubuntu-latest
     steps:
-    - name: 'Trash'
-      uses: subhamX/github-project-bot@v1.0.0
+    - name: 'Collect all issues'
+      uses: dhruvkb/issue-projector@0.0.1
       with:
         ACCESS_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}
-        COLUMN_NAME: 'Pending Review'
-        PROJECT_URL: https://github.com/orgs/purelyfortesting/projects/1
-        REPO_URL: https://github.com/purelyfortesting/trash
-    - name: 'Rubbish'
-      uses: subhamX/github-project-bot@v1.0.0
-      with:
-        ACCESS_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}
-        COLUMN_NAME: 'Pending Review'
-        PROJECT_URL: https://github.com/orgs/purelyfortesting/projects/1
-        REPO_URL: https://github.com/purelyfortesting/rubbish
-    - name: 'Garbage'
-      uses: subhamX/github-project-bot@v1.0.0
-      with:
-        ACCESS_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}
-        COLUMN_NAME: 'Pending Review'
-        PROJECT_URL: https://github.com/orgs/purelyfortesting/projects/1
-        REPO_URL: https://github.com/purelyfortesting/garbage
+        ORG_NAME: 'purelyfortesting'
+        PROJECT_NAME: 'Proproject'
+        COLUMN_NAME: 'Pending_Review'
