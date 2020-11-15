@@ -2,13 +2,26 @@ name: 'Proproject Automation'
 on:
   - workflow_dispatch
 jobs:
-  add_issue_to_project:
+  add_issues_to_project:
     runs-on: ubuntu-latest
     steps:
     - name: 'Collect all issues'
-      uses: dhruvkb/issue-projector@0.0.1
+      uses: dhruvkb/issue-projector@0.0.2
       with:
         ACCESS_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}
         ORG_NAME: 'purelyfortesting'
-        PROJECT_NAME: 'Proproject'
+        PROJECT_NUMBER: 1
         COLUMN_NAME: 'Pending_Review'
+        EXCLUDED_PROJECT_NUMBER: 2
+        ISSUE_TYPE: 'issue'
+  add_prs_to_project:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Collect all PRs'
+      uses: dhruvkb/issue-projector@0.0.2
+      with:
+        ACCESS_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}
+        ORG_NAME: 'purelyfortesting'
+        PROJECT_NUMBER: 2
+        COLUMN_NAME: 'Pending_Review'
+        ISSUE_TYPE: 'pr'
