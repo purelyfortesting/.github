@@ -1,12 +1,21 @@
 name: 'Proproject Automation'
 on:
-  - workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      interval:
+        description: 'The time interval to check for updated issues'     
+        required: false
+        default: '1'
+      intervalUnit:
+        description: 'The unit of the time interval to check for updated issues'
+        required: false
+        default: 'd'
 jobs:
   add_issues_to_project:
     runs-on: ubuntu-latest
     steps:
     - name: 'Collect all issues'
-      uses: dhruvkb/issue-projector@0.0.4
+      uses: dhruvkb/issue-projector@0.0.6
       with:
         ACCESS_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}
         ORG_NAME: 'purelyfortesting'
@@ -14,14 +23,18 @@ jobs:
         COLUMN_NAME: 'Pending_Review'
         EXCLUDED_PROJECT_NUMBER: 2
         ISSUE_TYPE: 'issue'
+        INTERVAL: ${{ github.event.inputs.interval }}
+        INTERVAL_UNIT: ${{ github.event.inputs.intervalUnit }}
   add_prs_to_project:
     runs-on: ubuntu-latest
     steps:
     - name: 'Collect all PRs'
-      uses: dhruvkb/issue-projector@0.0.4
+      uses: dhruvkb/issue-projector@0.0.6
       with:
         ACCESS_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}
         ORG_NAME: 'purelyfortesting'
         PROJECT_NUMBER: 2
         COLUMN_NAME: 'Pending_Review'
         ISSUE_TYPE: 'pr'
+        INTERVAL: ${{ github.event.inputs.interval }}
+        INTERVAL_UNIT: ${{ github.event.inputs.intervalUnit }}
